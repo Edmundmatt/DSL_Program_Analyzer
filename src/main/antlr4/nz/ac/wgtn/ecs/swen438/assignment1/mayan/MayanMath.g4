@@ -1,10 +1,23 @@
 
 grammar MayanMath;
 
-expression : 'foo' EOF ;
+//expression : 'foo' EOF ;
+start       : expr EOF;
+expr        : expr (addop | minusop | underscore) expr
+            | '(' expr ')'
+            | minusop expr
+            | units;
+
+addop       : '+';
+minusop     : '-';
+underscore  : '_';
+//units       : zero | (one)* ((one)* | (five)*) | (five)*;
+units       : zero | one ((one)* | (five)*) | five (five)*;
 
 // Terminal expressions
-zero    : '0';  // Zero
-dot     : '*';  // One
-bar     : '|';  // Five
-newRow  : '_';  // New row - probably not a terminal expression
+zero        : '0';
+one         : '*';
+five        : '|';
+
+// Whitespace - skip
+WS          : [\t\n\r]+ -> skip;
