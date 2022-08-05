@@ -5,17 +5,17 @@ expression : expr EOF ;
 expr        : expr (addop | minusop) expr
             | '(' expr ')'
             | minusop expr
-            | NUMBER;
+            | number;
 
 addop       : '+';
 minusop     : '-';
 
-DIGIT : ZERO | ONE | TWO | THREE | FOUR |
+number : digit + ('_'digit)*;
+
+digit : ZERO | ONE | TWO | THREE | FOUR |
         FIVE | SIX | SEVEN | EIGHT | NINE |
         TEN | ELEVEN | TWELVE | THIRTEEN | FOURTEEN |
         FIFTEEN | SIXTEEN | SEVENTEEN | EIGHTEEN | NINETEEN;
-
-NUMBER : DIGIT + ('_'DIGIT)*;
 
 // Terminal expressions
 ZERO        : '0';
