@@ -1,12 +1,24 @@
 package nz.ac.wgtn.ecs.swen438.assignment1.mayan;
 
+import org.antlr.v4.runtime.BailErrorStrategy;
+import org.antlr.v4.runtime.CharStreams;
+import nz.ac.wgtn.ecs.swen438.assignment1.mayan.MayanMathLexer;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.misc.ParseCancellationException;
 
 public class Task1 {
     public static boolean isValidMayanNumberExpression(String input) {
-        /**
-         * replace this dummy to solve task 1 -- additional helper classes can be used
-         * DO NOT CHANGE THE NAME OR SIGNATURE OF THIS CLASS AND METHOD !
-         */
-        return false;
+        try {
+            MayanMathLexer lexer = new MayanMathLexer(CharStreams.fromString(input));
+            CommonTokenStream tokens = new CommonTokenStream(lexer);
+            MayanMathParser parser = new MayanMathParser(tokens);
+            parser.setErrorHandler(new BailErrorStrategy());
+            parser.expression();
+            return true;
+        }
+        catch (ParseCancellationException x) {
+            return false;
+        }
     }
+
 }

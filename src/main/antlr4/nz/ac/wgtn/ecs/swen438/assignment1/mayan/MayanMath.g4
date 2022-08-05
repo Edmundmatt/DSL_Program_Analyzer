@@ -1,23 +1,43 @@
 
 grammar MayanMath;
 
-//expression : 'foo' EOF ;
-start       : expr EOF;
-expr        : expr (addop | minusop | underscore) expr
+expression : expr EOF ;
+expr        : expr (addop | minusop) expr
             | '(' expr ')'
             | minusop expr
-            | units;
+            | NUMBER;
 
 addop       : '+';
 minusop     : '-';
-underscore  : '_';
-//units       : zero | (one)* ((one)* | (five)*) | (five)*;
-units       : zero | one ((one)* | (five)*) | five (five)*;
+
+DIGIT : ZERO | ONE | TWO | THREE | FOUR |
+        FIVE | SIX | SEVEN | EIGHT | NINE |
+        TEN | ELEVEN | TWELVE | THIRTEEN | FOURTEEN |
+        FIFTEEN | SIXTEEN | SEVENTEEN | EIGHTEEN | NINETEEN;
+
+NUMBER : DIGIT + ('_'DIGIT)*;
 
 // Terminal expressions
-zero        : '0';
-one         : '*';
-five        : '|';
+ZERO        : '0';
+ONE         : '*';
+TWO         : '**';
+THREE       : '***';
+FOUR        : '****';
+FIVE        : '|';
+SIX         : '*|';
+SEVEN       : '**|';
+EIGHT       : '***|';
+NINE        : '****|';
+TEN         : '||';
+ELEVEN      : '*||';
+TWELVE      : '**||';
+THIRTEEN    : '***||';
+FOURTEEN    : '****||';
+FIFTEEN     : '|||';
+SIXTEEN     : '*|||';
+SEVENTEEN   : '**|||';
+EIGHTEEN    : '***|||';
+NINETEEN    : '****|||';
 
 // Whitespace - skip
 WS          : [\t\n\r]+ -> skip;
