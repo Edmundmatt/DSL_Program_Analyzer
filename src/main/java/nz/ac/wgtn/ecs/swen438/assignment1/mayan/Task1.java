@@ -2,7 +2,6 @@ package nz.ac.wgtn.ecs.swen438.assignment1.mayan;
 
 import org.antlr.v4.runtime.BailErrorStrategy;
 import org.antlr.v4.runtime.CharStreams;
-import nz.ac.wgtn.ecs.swen438.assignment1.mayan.MayanMathLexer;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.misc.ParseCancellationException;
 

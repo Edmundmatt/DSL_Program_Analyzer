@@ -27,6 +27,11 @@ public class Task1Test {
     }
 
     @Test
+    public void testNegative1() {
+        assertTrue(Task1.isValidMayanNumberExpression("-*"));
+    }
+
+    @Test
     public void testDigits() {
         for (String digit: validDigits) {
             assertTrue(Task1.isValidMayanNumberExpression(digit));
@@ -41,5 +46,25 @@ public class Task1Test {
     @Test
     public void testFail2() {
         assertFalse(Task1.isValidMayanNumberExpression("*0"));
+    }
+
+    @Test
+    public void testFail3() {
+        assertFalse(Task1.isValidMayanNumberExpression(" "));
+    }
+
+    @Test
+    public void testFail4() {
+        assertFalse(Task1.isValidMayanNumberExpression("_"));
+    }
+
+    @Test
+    public void testUnderscore1() {
+        assertTrue(Task1.isValidMayanNumberExpression("*_|")); //25
+    }
+
+    @Test
+    public void testUnderscore2() {
+        assertTrue(Task1.isValidMayanNumberExpression("*_0_*"));
     }
 }
