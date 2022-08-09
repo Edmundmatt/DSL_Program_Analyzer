@@ -65,6 +65,36 @@ public class Task2 {
                 }
 
                 @Override
+                public void enterUnderscore(MayanMathParser.UnderscoreContext ctx) {
+
+                }
+
+                @Override
+                public void exitUnderscore(MayanMathParser.UnderscoreContext ctx) {
+                    op = "_";
+                }
+
+                @Override
+                public void enterOpenbracket(MayanMathParser.OpenbracketContext ctx) {
+
+                }
+
+                @Override
+                public void exitOpenbracket(MayanMathParser.OpenbracketContext ctx) {
+
+                }
+
+                @Override
+                public void enterClosebracket(MayanMathParser.ClosebracketContext ctx) {
+
+                }
+
+                @Override
+                public void exitClosebracket(MayanMathParser.ClosebracketContext ctx) {
+
+                }
+
+                @Override
                 public void enterDigit(MayanMathParser.DigitContext ctx) {
 
                 }

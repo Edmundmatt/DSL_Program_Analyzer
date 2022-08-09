@@ -67,4 +67,19 @@ public class Task1Test {
     public void testUnderscore2() {
         assertTrue(Task1.isValidMayanNumberExpression("*_0_*"));
     }
+
+    @Test
+    public void testBracket1() {
+        assertTrue(Task1.isValidMayanNumberExpression("((*))"));
+    }
+
+    @Test
+    public void testBracket2() {
+        assertFalse(Task1.isValidMayanNumberExpression("((*)"));
+    }
+
+    @Test
+    public void testBracket3() {
+        assertTrue(Task1.isValidMayanNumberExpression("((*+|)+*)"));
+    }
 }

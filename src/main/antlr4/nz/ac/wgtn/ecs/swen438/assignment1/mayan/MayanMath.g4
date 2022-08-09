@@ -2,14 +2,18 @@
 grammar MayanMath;
 
 expression : expr EOF;
-expr        : expr (addop | minusop) expr
-            | '(' expr ')'
+expr        : expr (addop | minusop | underscore) expr
+//            | '(' expr ')'
+            | openbracket expr closebracket
             | minusop expr
             | digit;
 //            | number;
 
 addop       : '+';
 minusop     : '-';
+underscore  : '_';
+openbracket : '(';
+closebracket: ')';
 
 //number : digit + '_' + (digit)*;
 //number    : digit + ('_'digit)('_'digit)*;
