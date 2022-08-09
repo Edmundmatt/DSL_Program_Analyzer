@@ -65,4 +65,39 @@ public class Task2Test {
     public void testAddition3() throws Exception {
         assertEquals(Task2.evaluateMayanNumberExpression("|+*"), 6);
     }
+
+    @Test
+    public void testSubtraction1() throws Exception {
+        assertEquals(Task2.evaluateMayanNumberExpression("|-*"), 4);
+    }
+
+    @Test
+    public void testSubtraction2() throws Exception {
+        assertEquals(Task2.evaluateMayanNumberExpression("*-*"), 0);
+    }
+
+    @Test
+    public void testSubtraction3() throws Exception {
+        assertEquals(Task2.evaluateMayanNumberExpression("0-*"), -1);
+    }
+
+    @Test
+    public void testSubtraction4() throws Exception {
+        assertEquals(Task2.evaluateMayanNumberExpression("**-|"), -3);
+    }
+
+    @Test
+    public void testNegative() throws Exception {
+        assertEquals(Task2.evaluateMayanNumberExpression("-**|||"), -17);
+    }
+
+    @Test
+    public void testDoubleNegative() throws Exception {
+        assertEquals(Task2.evaluateMayanNumberExpression("--*"), 1);
+    }
+
+    @Test
+    public void testBrackets() throws Exception {
+        assertEquals(Task2.evaluateMayanNumberExpression("(***+|||)-*"), 17);
+    }
 }

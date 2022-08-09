@@ -5,49 +5,22 @@ expression : expr EOF;
 expr        : expr (addop | minusop) expr
             | '(' expr ')'
             | minusop expr
-            | digit
-            | number;
+            | digit;
+//            | number;
 
 addop       : '+';
 minusop     : '-';
 
 //number : digit + '_' + (digit)*;
 //number    : digit + ('_'digit)('_'digit)*;
-number  : digit+('_'digit)+;
+//number  : digit+('_'digit)+;
 
-//digit : ZERO | ONE | TWO | THREE | FOUR |
-//        FIVE | SIX | SEVEN | EIGHT | NINE |
-//        TEN | ELEVEN | TWELVE | THIRTEEN | FOURTEEN |
-//        FIFTEEN | SIXTEEN | SEVENTEEN | EIGHTEEN | NINETEEN;
-//
-//// Terminal expressions
-//ZERO        : '0';
-//ONE         : '*';
-//TWO         : '**';
-//THREE       : '***';
-//FOUR        : '****';
-//FIVE        : '|';
-//SIX         : '*|';
-//SEVEN       : '**|';
-//EIGHT       : '***|';
-//NINE        : '****|';
-//TEN         : '||';
-//ELEVEN      : '*||';
-//TWELVE      : '**||';
-//THIRTEEN    : '***||';
-//FOURTEEN    : '****||';
-//FIFTEEN     : '|||';
-//SIXTEEN     : '*|||';
-//SEVENTEEN   : '**|||';
-//EIGHTEEN    : '***|||';
-//NINETEEN    : '****|||';
-
-digit       : ZERO | one | two | three | four |
+digit       : zero | one | two | three | four |
             five | six | seven | eight | nine |
             ten | eleven | twelve | thirteen | fourteen |
             fifteen | sixteen | seventeen | eighteen | nineteen;
 
-ZERO        : '0';
+zero        : '0';
 one         : DOT;
 two         : DOT DOT;
 three       : DOT DOT DOT;
