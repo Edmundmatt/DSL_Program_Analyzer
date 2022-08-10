@@ -74,7 +74,8 @@ public class Task4 {
 
                 @Override
                 public void exitAddop(MayanMathParser.AddopContext ctx) {
-
+                    openCheck2();
+                    closeCheck2();
                 }
 
                 @Override
@@ -84,7 +85,8 @@ public class Task4 {
 
                 @Override
                 public void exitMinusop(MayanMathParser.MinusopContext ctx) {
-
+                    openCheck2();
+                    closeCheck2();
                 }
 
                 @Override
@@ -94,7 +96,8 @@ public class Task4 {
 
                 @Override
                 public void exitUnderscore(MayanMathParser.UnderscoreContext ctx) {
-
+                    openCheck2();
+                    closeCheck2();
                 }
 
                 @Override
@@ -105,7 +108,6 @@ public class Task4 {
                 @Override
                 public void exitOpenbracket(MayanMathParser.OpenbracketContext ctx) {
                     openCheck();
-                    System.out.println("CHeck");
                 }
 
                 @Override
@@ -115,7 +117,7 @@ public class Task4 {
 
                 @Override
                 public void exitClosebracket(MayanMathParser.ClosebracketContext ctx) {
-
+                    closeCheck();
                 }
 
                 @Override
@@ -125,7 +127,8 @@ public class Task4 {
 
                 @Override
                 public void exitDigit(MayanMathParser.DigitContext ctx) {
-                    System.out.println("CHECK");
+                    openCheck2();
+                    closeCheck2();
                 }
 
                 @Override
@@ -330,7 +333,7 @@ public class Task4 {
             };
             ParseTreeWalker.DEFAULT.walk(listener, tree);
         }
-        return false;
+        return twoClose;
     }
 
     private static void openCheck() {
@@ -348,6 +351,26 @@ public class Task4 {
             } else {
                 oneClose = true;
             }
+        }
+    }
+
+    private static void openCheck2() {
+        if(oneOpen && twoOpen) {
+            return;
+        } else if(oneOpen){
+            oneOpen = false;
+        }else {
+            return;
+        }
+    }
+
+    private static void closeCheck2() {
+        if(oneClose && twoClose) {
+            return;
+        } else if(oneClose) {
+            oneClose = false;
+        } else {
+            return;
         }
     }
 }
