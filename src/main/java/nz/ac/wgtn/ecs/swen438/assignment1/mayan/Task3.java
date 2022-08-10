@@ -15,7 +15,9 @@ public class Task3 {
 
     public static boolean doesContainDoubleUnaryOperator(String input) throws Exception {
 
-        if (Task1.isValidMayanNumberExpression(input)) {
+        if (!Task1.isValidMayanNumberExpression(input)) {
+            throw new Exception();
+        } else {
             oneMinus = false;
             twoMinus = false;
             MayanMathLexer lexer = new MayanMathLexer(CharStreams.fromString(input));

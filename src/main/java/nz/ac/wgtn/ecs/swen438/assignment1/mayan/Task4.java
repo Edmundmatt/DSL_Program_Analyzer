@@ -16,7 +16,9 @@ public class Task4 {
     private static boolean twoClose = false;
 
     public static boolean doesContainDoubleBracket(String input) throws Exception {
-        if(Task1.isValidMayanNumberExpression(input)) {
+        if(!Task1.isValidMayanNumberExpression(input)) {
+            throw new Exception();
+        } else {
             oneOpen = false;
             twoOpen = false;
             oneClose = false;
