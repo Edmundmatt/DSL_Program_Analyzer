@@ -14,7 +14,8 @@ import java.util.List;
 
 public class Task2 {
     private static int output = 0;
-    private static String op = "";
+//    private static String op = "";
+    private static int sub = 0;
     private static final List<Integer> numbersList = new ArrayList<>();
     private static final List<Integer> digitsList = new ArrayList<>();
 
@@ -24,7 +25,8 @@ public class Task2 {
             numbersList.clear();
             digitsList.clear();
             output = 0;
-            op = "";
+//            op = "";
+            sub = 0;
             MayanMathLexer lexer = new MayanMathLexer(CharStreams.fromString(input));
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             MayanMathParser parser = new MayanMathParser(tokens);
@@ -57,7 +59,7 @@ public class Task2 {
 
                 @Override
                 public void exitAddop(MayanMathParser.AddopContext ctx) {
-                    op = "+";
+
                 }
 
                 @Override
@@ -67,7 +69,7 @@ public class Task2 {
 
                 @Override
                 public void exitMinusop(MayanMathParser.MinusopContext ctx) {
-                    op = "-";
+                    sub++;
                 }
 
                 @Override
@@ -79,7 +81,7 @@ public class Task2 {
                 public void exitNumber(MayanMathParser.NumberContext ctx) {
                     calculateNumber();
                     numbersList.clear();
-                    op = "";
+                    sub = 0;
                 }
 
                 @Override
@@ -366,7 +368,7 @@ public class Task2 {
         for(int i = 0; i < numbersList.size(); i++){
             num += numbersList.get(i) * (int) Math.pow(20, numbersList.size()-1-i);
         }
-        if(op.equals("-")) output -= num; // Need to think about operations here
+        if(sub % 2 == 1) output -= num;
         else output += num;
     }
 }
