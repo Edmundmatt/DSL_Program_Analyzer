@@ -10,14 +10,13 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class Task2 {
     private static int output = 0;
     private static String op = "";
-    private static List<Integer> numbersList = new ArrayList<>();
-    private static List<Integer> digitsList = new ArrayList<>();
+    private static final List<Integer> numbersList = new ArrayList<>();
+    private static final List<Integer> digitsList = new ArrayList<>();
 
     public static int evaluateMayanNumberExpression(String input) throws Exception {
         // Check valid input
@@ -360,7 +359,6 @@ public class Task2 {
             digit += symb;
         }
         numbersList.add(digit);
-        System.out.println(numbersList.toString());
     }
 
     private static void calculateNumber(){
@@ -368,7 +366,7 @@ public class Task2 {
         for(int i = 0; i < numbersList.size(); i++){
             num += numbersList.get(i) * (int) Math.pow(20, numbersList.size()-1-i);
         }
-        if(op == "-") output -= num; // Need to think about operations here
+        if(op.equals("-")) output -= num; // Need to think about operations here
         else output += num;
     }
 }

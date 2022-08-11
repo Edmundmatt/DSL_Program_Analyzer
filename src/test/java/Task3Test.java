@@ -27,4 +27,13 @@ public class Task3Test {
         assertFalse(Task3.doesContainDoubleUnaryOperator("-(-*)-*"));
     }
 
+    @Test
+    public void underscoreSingleNegativeTest() throws Exception {
+        assertFalse(Task3.doesContainDoubleUnaryOperator("-*_*|"));
+    }
+
+    @Test
+    public void underscoreDoubleNegativeTest() throws Exception {
+        assertTrue(Task3.doesContainDoubleUnaryOperator("--*_|"));
+    }
 }
