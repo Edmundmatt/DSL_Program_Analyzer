@@ -91,8 +91,6 @@ public class Task2Test {
         assertEquals(Task2.evaluateMayanNumberExpression("(***+|||)-*"), 17);
     }
 
-
-
     @Test
     public void testUnderscore1() throws Exception {
         assertEquals(Task2.evaluateMayanNumberExpression("*_*"), 21);
@@ -101,5 +99,30 @@ public class Task2Test {
     @Test
     public void testUnderscore2() throws Exception {
         assertEquals(Task2.evaluateMayanNumberExpression("*_*||"), 31);
+    }
+
+    @Test
+    public void testUnderscore3() throws Exception {
+        assertEquals(Task2.evaluateMayanNumberExpression("**_||_*"), 1001);
+    }
+
+    @Test
+    public void testUnderscore4() throws Exception {
+        assertEquals(Task2.evaluateMayanNumberExpression("**_||_* + *"), 1002);
+    }
+
+    @Test
+    public void testGiven1() throws Exception{
+        assertEquals(Task2.evaluateMayanNumberExpression("**"), 2);
+    }
+
+    @Test
+    public void testGiven2() throws Exception{
+        assertEquals(Task2.evaluateMayanNumberExpression("*** + ***|| + ||"), 26);
+    }
+
+    @Test
+    public void testGiven3() throws Exception{
+        assertEquals(Task2.evaluateMayanNumberExpression("-*** + (***|| - ||)"), 0);
     }
 }

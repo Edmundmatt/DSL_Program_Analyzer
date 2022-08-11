@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Task1Test {
 
-    private String[] validDigits = {"0", "*", "**", "***", "****", "|",
+    private final String[] validDigits = {"0", "*", "**", "***", "****", "|",
         "*|", "**|", "***|", "****|", "||", "*||", "**||", "***||",
         "****||", "|||", "*|||", "**|||", "***|||", "****|||"};
 
@@ -59,6 +59,11 @@ public class Task1Test {
     }
 
     @Test
+    public void testFail5() {
+        assertFalse(Task1.isValidMayanNumberExpression(""));
+    }
+
+    @Test
     public void testUnderscore1() {
         assertTrue(Task1.isValidMayanNumberExpression("*_|")); //25
     }
@@ -82,4 +87,6 @@ public class Task1Test {
     public void testBracket3() {
         assertTrue(Task1.isValidMayanNumberExpression("((*+|)+*)"));
     }
+
+
 }

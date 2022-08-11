@@ -117,6 +117,16 @@ public class Task3 {
                 }
 
                 @Override
+                public void enterNumber(MayanMathParser.NumberContext ctx) {
+
+                }
+
+                @Override
+                public void exitNumber(MayanMathParser.NumberContext ctx) {
+
+                }
+
+                @Override
                 public void enterDigit(MayanMathParser.DigitContext ctx) {
 
                 }

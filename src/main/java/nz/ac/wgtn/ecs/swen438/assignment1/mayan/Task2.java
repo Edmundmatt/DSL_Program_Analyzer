@@ -9,16 +9,23 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class Task2 {
     private static int output = 0;
     private static String op = "";
+    private static List<Integer> numbersList = new ArrayList<>();
+    private static List<Integer> digitsList = new ArrayList<>();
 
     public static int evaluateMayanNumberExpression(String input) throws Exception {
         // Check valid input
         if(Task1.isValidMayanNumberExpression(input)){
-
+            numbersList.clear();
+            digitsList.clear();
+            output = 0;
+            op = "";
             MayanMathLexer lexer = new MayanMathLexer(CharStreams.fromString(input));
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             MayanMathParser parser = new MayanMathParser(tokens);
@@ -26,7 +33,7 @@ public class Task2 {
             MayanMathListener listener = new MayanMathListener() {
                 @Override
                 public void enterExpression(MayanMathParser.ExpressionContext ctx) {
-                    output = 0;
+
                 }
 
                 @Override
@@ -65,13 +72,25 @@ public class Task2 {
                 }
 
                 @Override
+                public void enterNumber(MayanMathParser.NumberContext ctx) {
+
+                }
+
+                @Override
+                public void exitNumber(MayanMathParser.NumberContext ctx) {
+                    calculateNumber();
+                    numbersList.clear();
+                    op = "";
+                }
+
+                @Override
                 public void enterUnderscore(MayanMathParser.UnderscoreContext ctx) {
 
                 }
 
                 @Override
                 public void exitUnderscore(MayanMathParser.UnderscoreContext ctx) {
-                    op = "_";
+
                 }
 
                 @Override
@@ -101,7 +120,8 @@ public class Task2 {
 
                 @Override
                 public void exitDigit(MayanMathParser.DigitContext ctx) {
-
+                    calculateDigits();
+                    digitsList.clear();
                 }
 
                 @Override
@@ -116,12 +136,12 @@ public class Task2 {
 
                 @Override
                 public void enterOne(MayanMathParser.OneContext ctx) {
-
+                    visit(1);
                 }
 
                 @Override
                 public void exitOne(MayanMathParser.OneContext ctx) {
-                    visit(1);
+
                 }
 
                 @Override
@@ -325,28 +345,30 @@ public class Task2 {
                 }
             };
             ParseTreeWalker.DEFAULT.walk(listener, tree);
-            System.out.println(output);
             return output;
         }
         return 0;
     }
 
-    private static void visit(int input) {
-        if(op != ""){
-            checkOp(input);
-            op = "";
-        }else {
-            output += input;
-        }
+    private static void visit(int input){
+        digitsList.add(input);
     }
 
-    private static void checkOp(int input) {
-        if(op == "+"){
-            output += input;
-        } else if(op == "-") {
-            output -= input;
-        } else if(op == "_") {
-            System.out.println("Underscore");
+    private static void calculateDigits(){
+        int digit = 0;
+        for(int symb : digitsList){
+            digit += symb;
         }
+        numbersList.add(digit);
+        System.out.println(numbersList.toString());
+    }
+
+    private static void calculateNumber(){
+        int num = 0;
+        for(int i = 0; i < numbersList.size(); i++){
+            num += numbersList.get(i) * (int) Math.pow(20, numbersList.size()-1-i);
+        }
+        if(op == "-") output -= num; // Need to think about operations here
+        else output += num;
     }
 }

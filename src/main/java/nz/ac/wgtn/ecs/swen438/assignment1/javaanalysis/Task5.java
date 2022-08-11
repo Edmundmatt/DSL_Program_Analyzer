@@ -13,17 +13,18 @@ import java.util.stream.Stream;
 
 public class Task5 {
     public static boolean doesUseDifferentVariablesInEqualsAndHashCode(String input) throws Exception {
-        CompilationUnit cu = StaticJavaParser.parse(input);
-
-        return cu.findAll(MethodDeclaration.class).stream()
-                .filter(decl -> decl.getNameAsString().equals("hashCode"))
-                .flatMap(decl -> decl.findAll(FieldDeclaration.class).stream())
-                .anyMatch();
-    }
-
-    private static Stream<Object> returnEquals(CompilationUnit cu){
-        return cu.findAll(MethodDeclaration.class).stream()
-                .filter(decl -> decl.getNameAsString().equals("equals"))
-                .flatMap(decl -> decl.findAll(FieldDeclaration.class).stream());
+//        CompilationUnit cu = StaticJavaParser.parse(input);
+//
+//        return cu.findAll(MethodDeclaration.class).stream()
+//                .filter(decl -> decl.getNameAsString().equals("hashCode"))
+//                .flatMap(decl -> decl.findAll(FieldDeclaration.class).stream())
+//                .anyMatch();
+//    }
+//
+//    private static Stream<Object> returnEquals(CompilationUnit cu){
+//        return cu.findAll(MethodDeclaration.class).stream()
+//                .filter(decl -> decl.getNameAsString().equals("equals"))
+//                .flatMap(decl -> decl.findAll(FieldDeclaration.class).stream());
+        return false;
     }
 }
