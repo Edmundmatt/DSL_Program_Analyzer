@@ -14,7 +14,6 @@ import java.util.List;
 
 public class Task2 {
     private static int output = 0;
-//    private static String op = "";
     private static int sub = 0;
     private static final List<Integer> numbersList = new ArrayList<>();
     private static final List<Integer> digitsList = new ArrayList<>();
@@ -25,7 +24,6 @@ public class Task2 {
             numbersList.clear();
             digitsList.clear();
             output = 0;
-//            op = "";
             sub = 0;
             MayanMathLexer lexer = new MayanMathLexer(CharStreams.fromString(input));
             CommonTokenStream tokens = new CommonTokenStream(lexer);

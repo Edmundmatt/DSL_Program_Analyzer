@@ -136,4 +136,9 @@ public class Task2Test {
     public void testGiven3() throws Exception{
         assertEquals(Task2.evaluateMayanNumberExpression("-*** + (***|| - ||)"), 0);
     }
+
+    @Test
+    public void testTripleNegative() throws Exception{
+        assertEquals(Task2.evaluateMayanNumberExpression("---*"), -1);
+    }
 }

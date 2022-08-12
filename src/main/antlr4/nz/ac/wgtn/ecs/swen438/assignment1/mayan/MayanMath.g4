@@ -3,10 +3,8 @@ grammar MayanMath;
 
 expression : expr EOF;
 expr        : expr (addop | minusop | underscore) expr
-//            | '(' expr ')'
             | openbracket expr closebracket
             | minusop expr
-//            | digit;
             | number;
 
 addop       : '+';
